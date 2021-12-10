@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <title>Akduman Teknoloji - Iletisim</title>
+  <link rel="icon" href="/static/favicon.ico" type="icon"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<div><a href="/" class="main-static-bant"><img src="/static/bant1.png" width="100%" alt=""></a></div>
+<body>
+  <style>
+    body {
+      background: #F1F1F1
+    }
+  </style>
+<!-- Navbar Başlangıcı  -->
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <style>
+    .navbar {
+      width: 100%;
+      padding: 12px;
+      font-size: 13px;
+    }
+  </style>
+  <ul class="nav nav-pills">
+    <img src="/static/Logo1.png" width="40" height="30" alt="">
+    <li class="nav-item">
+      <a class="nav-link active" href="/">Ana Sayfa</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/kategori" role="button" aria-haspopup="true" aria-expanded="false">Kategoriler</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item {{'active' if kategori == 'Akıllı Telefon' }}" href="/kategori/akillitelefon">Akıllı Telefon</a>
+        <a class="dropdown-item {{'active' if kategori == 'Bilgisayar ve Tablet' }}" href="/kategori/pc">Bilgisayar ve Tablet</a>
+        <a class="dropdown-item {{'active' if kategori == 'Akıllı Saat' }}" href="/kategori/akillisaat">Akıllı Saat</a>
+        <a class="dropdown-item {{'active' if kategori == 'TV, Ses ve Görüntü Sistemi' }}" href="/kategori/tv">TV, Ses ve Görüntü Sistemi</a>
+        <a class="dropdown-item {{'active' if kategori == 'Küçük Ev Aletleri' }}" href="/kategori/ev">Küçük Ev Aletleri</a>
+        <a class="dropdown-item {{'active' if kategori == 'Beyaz Esya' }}" href="/kategori/beyazesya">Beyaz Eşya</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/iletisim">İletişim</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/hakkımızda">Hakkımızda</a>
+    </li>
+    {% if kullanici['rol'] == 'yonetici' %}
+    <li class="nav-item">
+      <a class="nav-link" href="/uruntanimla">Ürün Tanımla</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/mesajlar">Mesajlar</a>
+    </li>
+    {% endif %}
+    <a class="btn btn-primary" href="/sepet" role="button">Sepet
+      <i class="bi bi-basket2-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+        </svg></a>
+  </ul>
+
+  {% if kullanici %}
+  <ul class="navbar-nav ml-auto">
+    <a class="btn btn-primary" href="/cikis"> Merhaba {{kullanici['ad']}} - Çıkış yap
+      <i class="bi bi-basket2-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg></a>
+</ul>
+{% else %}
+  <ul class="navbar-nav ml-auto">
+    <a class="btn btn-primary" href="/giris"> Kullanıcı Girişi
+      <i class="bi bi-basket2-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg></a>
+</ul>
+{% endif %}
+</nav>
+
+
+  <div class="container">
+    <style>
+      div.container {
+        margin-top: 20px;
+      }
+    </style>
+      <div class="row">
+          <div class="col">
+              <div class="card">
+                  <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Bizimle İletişime Geçin.
+                  </div>
+                  <div class="card-body">
+
+                        <form action="/mesajkaydet" method="post">
+                          <div class="form-group">
+                              <label for="name">AD SOYAD</label>
+                              <input type="text" class="form-control" id="adsoyad" name="adsoyad" aria-describedby="emailHelp" placeholder="Adınızı ve Soyadınızı Giriniz." required>
+                          </div>
+                          <div class="form-group">
+                              <label for="email">E-MAIL</label>
+                              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="E-Mail Adressinizi Giriniz." required>
+                              <small id="emailHelp" class="form-text text-muted">E-Mail Adresiniz yok ise telefon numaranızı "+90**********@hotmail.com" giriniz.</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="message">MESAJ</label>
+                              <textarea class="form-control" id="mesaj" name="mesaj" rows="6" required></textarea>
+                          </div>
+                          <div class="mx-auto">
+                          <button type="submit" class="btn btn-primary text-right"onclick="myFunction()">Gönder</button></div>
+                          <script>
+                            function myFunction() {
+                              alert("Mesajınız Kaydedildi!");
+                            }
+                            </script>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-4">
+              <div class="card bg-light mb-3">
+                  <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Adresimiz</div>
+                  <div class="card-body">
+                      <p>20359 / ST Pauli</p>
+                      <p>Hamburg / Altona-Alstadt</p>
+                      <p>Germany</p>
+                      <p>E-Mail : akduman@teknoloji.com</p>
+                      <p>Tel. +905385158867</p>
+  
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+</body>
+</html>

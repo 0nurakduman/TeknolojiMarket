@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <title>Akduman Teknoloji - Anasayfa</title>
+  <link rel="icon" href="/static/favicon.ico" type="icon"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
+  <div><a href="/" class="main-static-bant"><img src="/static/bant1.png" width="100%" alt=""></a></div>
+  <body>
+
+<!-- Navbar Başlangıcı  -->
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  
+  <style>
+    .navbar {
+      width: 100%;
+      padding: 12px;
+      font-size: 13px;
+    }
+  </style>
+  <ul class="nav nav-pills">
+    <img src="/static/Logo1.png" width="40" height="30" alt="">
+    <li class="nav-item">
+      <a class="nav-link active" href="/">Ana Sayfa</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/kategori" role="button" aria-haspopup="true" aria-expanded="false">Kategoriler</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item {{'active' if kategori == 'Akıllı Telefon' }}" href="/kategori/akillitelefon">Akıllı Telefon</a>
+        <a class="dropdown-item {{'active' if kategori == 'Bilgisayar ve Tablet' }}" href="/kategori/pc">Bilgisayar ve Tablet</a>
+        <a class="dropdown-item {{'active' if kategori == 'Akıllı Saat' }}" href="/kategori/akillisaat">Akıllı Saat</a>
+        <a class="dropdown-item {{'active' if kategori == 'TV, Ses ve Görüntü Sistemi' }}" href="/kategori/tv">TV, Ses ve Görüntü Sistemi</a>
+        <a class="dropdown-item {{'active' if kategori == 'Küçük Ev Aletleri' }}" href="/kategori/ev">Küçük Ev Aletleri</a>
+        <a class="dropdown-item {{'active' if kategori == 'Beyaz Esya' }}" href="/kategori/beyazesya">Beyaz Eşya</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/iletisim">İletişim</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/hakkımızda">Hakkımızda</a>
+    </li>
+    {% if kullanici['rol'] == 'yonetici' %}
+    <li class="nav-item">
+      <a class="nav-link" href="/uruntanimla">Ürün Tanımla</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/mesajlar">Mesajlar</a>
+    </li>
+    {% endif %}
+    <a class="btn btn-primary" href="/sepet" role="button">Sepet
+      <i class="bi bi-basket2-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+        </svg></a>
+  </ul>
+
+  {% if kullanici %}
+  <ul class="navbar-nav ml-auto">
+    <a class="btn btn-primary" href="/cikis"> Merhaba {{kullanici['ad']}} - Çıkış yap
+      <i class="bi bi-basket2-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg></a>
+</ul>
+{% else %}
+  <ul class="navbar-nav ml-auto">
+    <a class="btn btn-primary" href="/giris"> Kullanıcı Girişi
+      <i class="bi bi-basket2-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg></a>
+</ul>
+{% endif %}
+</nav>
+
+<div class="container-fluid">
+    <h1>Sepet</h1>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Ürün</th>
+        <th>Açıklama</th>
+        <th style="text-align:right">Fiyat</th>
+        <th>-</th>
+      </tr>
+    </thead>
+    <tbody>
+    {%for urun in sepet_urunleri%}
+      <tr>
+        <td>
+          <img src='{{urun["fotograf"]}}' width="80px" height="60px">
+          {{urun["ad"]}}
+        </td>
+        <td>{{urun["aciklama"]}}</td>
+        <td style="text-align:right">{{urun["fiyat"]}}₺</td>
+        <td>
+          <form action="/sepettencikar" method="post">
+              <input type="hidden" id="_id" name="_id" value='{{urun["_id"]}}'>
+              <button type="submit" class="btn"><i class="fas fa-trash"></i></button>
+            </form>
+        </td>
+      </tr>
+    {%endfor%}
+    <tr>
+      <td colspan="3" style="text-align:right">
+        Toplam: {{ sepet_urunleri|sum(attribute='fiyat') }}₺
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a href="/satinal" onclick="myFunction()" class="btn btn-primary btn-block">Satın Al</a>
+  
+  <script>
+      function myFunction() {
+        alert("Satın Alma Islemi Başarili!");
+      }
+      </script>
+</div>
+
+</body>
+</html>
